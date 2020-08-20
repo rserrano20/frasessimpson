@@ -1,25 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{useState,useEffect} from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button'
+import Frase from './components/Frase';
+import Spinner from './components/Spinner';
+
 
 function App() {
+  //state
+  const[personaje,setPersonaje] = useState({});
+  const[cargando,setCargando] = useState(false);
+
+  useEffect(()=> {
+    consultarAPI();
+
+  },[])
+
+    const consultarAPI = async() =>{
+      setCargando(true);
+    const respuesta = await fetch("https://thesimpsonsquoteapi.glitch.me/quotes");
+    const result = await respuesta.json();
+    console.log(respuesta);
+    console.log(result[0]);
+    
+
+    setTimeout(() =>{
+      setPersonaje(result[0]);
+      setCargando(false);
+    },2000);
+
+  };
+
+  const mostrarComponente = (cargando === true)  ? <Spinner></Spinner> : <Frase personaje={personaje}></Frase>
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="container text-center my-5">
+      <article className="d-flex flex-column align-items-center">
+        <img  className="w-75" src={process.env.PUBLIC_URL+"logo.png"} alt="logo de los simpson"></img>
+        <Button  className="w-50 my-5 shadow" variant="outline-warning" onClick={()=> consultarAPI()}>Obtener frase</Button>
+      </article>
+      {mostrarComponente}
+    </section>
   );
 }
 
