@@ -7,7 +7,7 @@
   .spinner > div {
     width: 18px;
     height: 18px;
-    background-color:rgb(55, 0, 255);
+    background: linear-gradient(191deg, rgba(255,249,44,0.9415966215587798) 13%, rgba(74,67,58,1) 71%); 
   
     border-radius: 100%;
     display: inline-block;

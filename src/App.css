@@ -1,3 +1,9 @@
 body{
-    background-color: aqua;
+    
+background: linear-gradient(191deg, rgba(255,235,44,0.9415966215587798) 7%, rgba(74,67,58,1) 76%); 
+}
+
+.row{
+
+    background: linear-gradient(191deg, rgba(185,44,255,0.9415966215587798) 7%, rgba(74,67,58,1) 76%); ;
 }

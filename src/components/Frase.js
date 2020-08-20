@@ -3,15 +3,15 @@ import Card from 'react-bootstrap/Card';
 
 const Frase = (props) => {
   return (
-    <Card>
+    <Card  className="text-center">
       <Card.Header></Card.Header>
       <Card.Body>
         <div className="row">
-          <div className="col-sm-12 col-md-4">
+          <div className="col-sm-12 col-md-4 ">
             <img src={props.personaje.image} alt={props.personaje.character}></img>
-          </div>
-          <div className="col-sm-12 col-md-8">
-            <Card.Title>{props.personaje.character}</Card.Title>
+          </div> 
+          <div className="col-sm-12 col-md-8 ">
+            <Card.Title >{props.personaje.character}</Card.Title>
             <Card.Text>{props.personaje.quote}</Card.Text>
           </div>
         </div>
